@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+/* section */
+section {
+    width: 50%;
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+section::before {
+    width: 30px;
+    height: 30px;
+    background: var(--primary);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    top: 18px;
+    left: 18px;
+}
+
+section::after {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--primary);
+
+    top: 11px;
+    left: 11px;
+}
+
+.dark {
+    --primary: #00c050;
+    --other: hsl(0, 0%, 90%);
+}
+
+/* label */
+label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    margin: 12px 0;
+
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="radio"] {
+    opacity: 0;
+}
+
+/* .design */
+.design {
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid var(--other);
+    border-radius: 100%;
+    margin-right: 16px;
+
+    position: relative;
+}
+
+.design::before,
+.design::after {
+    content: "";
+    display: block;
+
+    width: inherit;
+    height: inherit;
+
+    border-radius: inherit;
+
+    position: absolute;
+    transform: scale(0);
+    transform-origin: center center;
+}
+
+.design:before {
+    background: var(--other);
+    opacity: 0;
+    transition: .3s;
+}
+
+.design::after {
+    background: var(--primary);
+    opacity: .4;
+    transition: .6s;
+}
+
+input:checked+.design::before {
+    opacity: 1;
+    transform: scale(.6);
+}
+
+input:hover+.design,
+input:focus+.design {
+    border: 1px solid var(--primary);
+}
+
+input:hover+.design:before,
+input:focus+.design:before {
+    background: var(--primary);
+}
+
+input:hover~.text {
+    color: var(--primary);
+}
+
+input:focus+.design::after,
+input:active+.design::after {
+    opacity: .1;
+    transform: scale(2.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #004AAD;
+
+    padding: 30px 10px;
+}
+
+.card {
+    max-width: 500px;
+    margin: auto;
+    color: white;
+    border-radius: 20 px;
+}
+
+p {
+    margin: 0px;
+}
+
+.container .h8 {
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    padding-bottom: 2vh;
+}
+
+.btn.btn-primary {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background-image: linear-gradient(to right, #008036 0%, #43ff92 51%, #00c050 100%);
+    border: none;
+    transition: 0.5s;
+    background-size: 200% auto;
+
+}
+
+
+.btn.btn.btn-primary:hover {
+    background-position: right center;
+    color: #000000;
+    text-decoration: none;
+}
+
+
+
+.btn.btn-primary:hover .fas.fa-arrow-right {
+    transform: translate(15px);
+    transition: transform 0.2s ease-in;
+}
+
+.form-control {
+    color: white;
+    background-color: #004AAD;
+    border: 2px solid transparent;
+    height: 60px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+.form-control:focus {
+    color: white;
+    background-color: #004AAD;
+    border: 2px solid #001b3f;
+    box-shadow: none;
+}
+
+.text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+::placeholder {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.column {
+    padding-top: 5vh;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+}

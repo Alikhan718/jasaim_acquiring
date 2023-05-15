@@ -1,1 +1,1 @@
-# jasaim_acquiring
+# Website for E-Diploma customization payments
