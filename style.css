@@ -30,7 +30,7 @@ section::after {
 
 .dark {
     --primary: #00c050;
-    --other: hsl(0, 0%, 90%);
+    --other: hsl(0, 0%, 0%);
 }
 
 /* label */
@@ -126,7 +126,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #004AAD;
+    background-color: #f3f8ff;
 
     padding: 30px 10px;
 }
@@ -134,7 +134,7 @@ body {
 .card {
     max-width: 500px;
     margin: auto;
-    color: white;
+    color: rgb(0, 0, 0);
     border-radius: 20 px;
 }
 
@@ -160,7 +160,7 @@ p {
     border: none;
     transition: 0.5s;
     background-size: 200% auto;
-
+    color: white;
 }
 
 
@@ -178,8 +178,8 @@ p {
 }
 
 .form-control {
-    color: white;
-    background-color: #004AAD;
+    color: rgb(0, 0, 0);
+    background-color: #d7e9ff;
     border: 2px solid transparent;
     height: 60px;
     padding-left: 20px;
@@ -187,8 +187,8 @@ p {
 }
 
 .form-control:focus {
-    color: white;
-    background-color: #004AAD;
+    color: rgb(0, 0, 0);
+    background-color: #d4e6ff;
     border: 2px solid #001b3f;
     box-shadow: none;
 }
@@ -204,10 +204,20 @@ p {
 }
 
 .column {
-    padding-top: 5vh;
+    padding-top: 2vh;
 }
 
 input[type="text"],
 input[type="email"] {
     width: 100%;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-container {
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 12px;
 }

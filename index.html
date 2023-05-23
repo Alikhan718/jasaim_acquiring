@@ -17,63 +17,103 @@
                 <p class="h8">Выбор дизайна E-Diploma</p>
                 <p class="h8 py-3">Заполните форму и оформите оплату</p>
                 <p class="h3 py-2">Убедитесь в корректности данных перед подтверждением!</p>
-                <div class="row gx-3">
-                    <div class="col-12 column">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">ФИО</p>
-                            <input class="form-control mb-3" type="text" placeholder="Фамилия Имя Отчество" required>
+                <form id="myForm" method="POST">
+                    <div class="row gx-3">
+                        <div class="col-12 column">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">ФИО</p>
+                                <input id="fullName" class="form-control mb-3" type="text"
+                                    placeholder="Фамилия Имя Отчество" required>
+                            </div>
+                        </div>
+                        <div class="col-12 column">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Электронная почта</p>
+                                <input id="email" class="form-control mb-3" type="email" placeholder="example@mail.com"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-6 column">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Выберите дизайн</p>
+                                <section class="dark">
+                                    <label>
+                                        <input type="radio" name="design" value="classic" checked>
+                                        <span class="design"></span>
+                                        <span class="text">Классика</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="design" value="red">
+                                        <span class="design"></span>
+                                        <span class="text">Красный</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="design" value="blue">
+                                        <span class="design"></span>
+                                        <span class="text">Синий</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="design" value="green">
+                                        <span class="design"></span>
+                                        <span class="text">Зеленый</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="design" value="custom">
+                                        <span class="design"></span>
+                                        <span class="text">Кастомный</span>
+                                    </label>
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="check" name="check" value="Agree" required>
+                            <label for="check">Я согласен (согласна) на обработку моих персональных данных для оказания
+                                услуги</label>
+                        </div>
+
+                        <div class="col-12 column">
+                            <button type="submit" class="btn btn-primary mb-3">
+                                <span class="ps-3">Оплатить ₸</span>
+                                <span class="fas fa-arrow-right"></span>
+                            </button>
                         </div>
                     </div>
-                    <div class="col-12 column">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">Электронная почта</p>
-                            <input class="form-control mb-3" type="email" placeholder="example@mail.com" required>
-                        </div>
-                    </div>
-                    <div class="col-6 column">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">Выберите дизайн</p>
-                            <section class="dark">
-                                <label>
-                                    <input type="radio" name="dark" checked>
-                                    <span class="design"></span>
-                                    <span class="text">Классический</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="dark" checked>
-                                    <span class="design"></span>
-                                    <span class="text">Красный</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="dark">
-                                    <span class="design"></span>
-                                    <span class="text">Синий</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="dark">
-                                    <span class="design"></span>
-                                    <span class="text">Зеленый</span>
-                                </label>
-                            </section>
-                        </div>
-                    </div>
-                    <!-- <div class="col-6">
-                        <div class="d-flex flex-column">
-                            <p class="text mb-1">CVV/CVC</p>
-                            <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
-                        </div>
-                    </div> -->
-                    <div class="col-12 column">
-                        <div class="btn btn-primary mb-3">
-                            <span class="ps-3">Оплатить ₸</span>
-                            <span class="fas fa-arrow-right"></span>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>
-    <script src="index.js"></script>
+
+    <script>
+        // Retrieve the form element
+        const form = document.getElementById('myForm');
+
+        // Add submit event listener to the form
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Retrieve the input field values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const design = document.querySelector('input[name="design"]:checked').value;
+
+            // Create an object with the form data
+            const formData = {
+                fullName: fullName,
+                email: email,
+                design: design
+            };
+
+            // Here, you can perform further actions with the form data, such as saving it to a database or sending it to a server.
+
+            // For demonstration purposes, let's log the form data to the console
+            console.log(formData);
+
+            // Reset the form
+            form.reset();
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
