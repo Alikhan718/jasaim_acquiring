@@ -1,4 +1,7 @@
 <?php
+extension_loaded('pgsql') or die('PostgreSQL extension not loaded');
+header("Access-Control-Allow-Origin: *");
+
 // Retrieve the form data from the POST request
 $fullName = $_POST['fullName'];
 $email = $_POST['email'];
@@ -11,18 +14,21 @@ $host = 'localhost';
 $port = '5432';
 $username = 'jasaim';
 $password = 'jasaim7182';
-$database = 'form_data';
+$database = 'jas';
 
 $conn = pg_connect("host=$host port=$port dbname=$database user=$username password=$password");
 
 // Check for any connection errors
 if (!$conn) {
     die('Connection failed: ' . pg_last_error());
+} else {
+    echo "Connected successfully";
 }
 
 // Prepare the SQL statement to insert the form data into the table
 $query = "INSERT INTO form_data (full_name, email, design) VALUES ($1, $2, $3)";
 $params = array($fullName, $email, $design);
+
 
 // Execute the SQL statement
 $result = pg_query_params($conn, $query, $params);
@@ -32,6 +38,7 @@ if ($result) {
     echo 'Form data saved successfully.';
 } else {
     // Error occurred while inserting data
+    echo($params);
     echo 'Error: ' . pg_last_error($conn);
 }
 
